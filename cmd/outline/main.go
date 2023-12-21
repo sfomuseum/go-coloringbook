@@ -8,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/sfomuseum/go-coloringbook/outline"
+	"github.com/sfomuseum/go-flags/flagset"
 )
 
 func main() {

@@ -82,6 +82,8 @@ func ContourSVG(ctx context.Context, im image.Image, opts *ContourOptions) (Outl
 
 	fmt.Fprintf(wr, `</svg>`)
 
+	wr.Flush()
+
 	o := &SVGOutline{
 		svg: buf.Bytes(),
 	}
