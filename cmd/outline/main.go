@@ -5,6 +5,7 @@ import (
 	"image"
 	_ "image/jpeg"
 	_ "image/png"
+	_ "image/gif"	
 	"log"
 	"os"
 
@@ -29,18 +30,18 @@ func main() {
 
 	fs := flagset.NewFlagSet("coloringbook")
 
-	fs.IntVar(&contour_iterations, "contour-iteration", 8, "...")
-	fs.Float64Var(&contour_scale, "contour-scale", 1.0, "...")
-	fs.StringVar(&contour_format, "contour-format", "png", "...")
+	fs.IntVar(&contour_iterations, "contour-iteration", 8, "The number of iterations to perform generating an image contour.")
+	fs.Float64Var(&contour_scale, "contour-scale", 1.0, "The scale factor of the final image contour.")
+	fs.StringVar(&contour_format, "contour-format", "png", "The format for the final image contour. Valid options are: png, svg.")
 
-	fs.IntVar(&vtracer_precision, "vtracer-precision", 6, "...")
-	fs.IntVar(&vtracer_speckle, "vtracer-speckle", 8, "...")
+	fs.IntVar(&vtracer_precision, "vtracer-precision", 6, "Number of significant bits (color precision) to use in an RGB channel.")
+	fs.IntVar(&vtracer_speckle, "vtracer-speckle", 8, "Discard patches smaller than X px in size")
 
-	fs.BoolVar(&use_batik, "use-batik", true, "...")
-	fs.StringVar(&path_batik, "path-batik", "/usr/local/src/batik-1.17/batik-rasterizer-1.17.jar", "...")
+	fs.BoolVar(&use_batik, "use-batik", true, "Use the Java Batik SVG raterizer.")
+	fs.StringVar(&path_batik, "path-batik", "/usr/local/src/batik-1.17/batik-rasterizer-1.17.jar", "The path to the Java Batik SVG raterizer JAR file.")
 
-	fs.StringVar(&infile, "infile", "", "...")
-	fs.StringVar(&outfile, "outfile", "", "...")
+	fs.StringVar(&infile, "infile", "", "The path to the image you want to generate an outline for.")
+	fs.StringVar(&outfile, "outfile", "", "The path to the final image that has been outlined.")
 
 	flagset.Parse(fs)
 
