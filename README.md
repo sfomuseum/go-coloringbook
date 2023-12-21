@@ -4,7 +4,7 @@ Go package for generating "coloring book" style images.
 
 ## Documentation
 
-Documentation is incomplete at this time.
+Documentation is incomplete at this time. Until then take a look at [cmd/outline/main.go](cmd/outline/main.go) for basic usage guidelines.
 
 For background, consult the [Coloring Books Pages For the SFO Museum Aviation Collection ](https://millsfield.sfomuseum.org/blog/2023/12/18/coloringbook/) blog post.
 
