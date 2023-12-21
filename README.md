@@ -1,6 +1,6 @@
 # go-colouringbook
 
-Go package for generating "coloring book" images.
+Go package for generating "coloring book" style images.
 
 ## Documentation
 
