@@ -3,6 +3,7 @@ module github.com/sfomuseum/go-coloringbook
 go 1.21.5
 
 require (
+	github.com/aaronland/go-chaikin v1.0.0
 	github.com/fogleman/colormap v0.0.0-20180829212827-f273ae61505a
 	github.com/fogleman/contourmap v0.0.0-20190814184649-9f61d36c4199
 	github.com/fogleman/gg v1.3.0

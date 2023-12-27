@@ -8,6 +8,7 @@ import (
 	"image"
 	"strings"
 
+	"github.com/aaronland/go-chaikin"
 	"github.com/fogleman/colormap"
 	"github.com/fogleman/contourmap"
 	"github.com/fogleman/gg"
@@ -24,6 +25,8 @@ type ContourOptions struct {
 	Iterations int
 	Scale      float64
 	Format     string
+	Smoothing bool
+	SmoothingIterations int
 }
 
 func Contour(ctx context.Context, im image.Image, opts *ContourOptions) (Outline, error) {
@@ -121,8 +124,28 @@ func ContourImage(ctx context.Context, im image.Image, opts *ContourOptions) (im
 
 			dc.NewSubPath()
 
-			for _, p := range c {
-				dc.LineTo(p.X, p.Y)
+			if opts.Smoothing {
+				
+				input := make([][2]float64, len(c))
+				
+				for i, p := range c {
+					input[i] = [2]float64{ p.X, p.Y }
+				}
+				
+				iters := opts.SmoothingIterations
+				close := true
+				
+				output := chaikin.Smooth(input, iters, close)
+				
+				for _, p := range output {
+					dc.LineTo(p[0], p[1])
+				}
+				
+			} else {
+				
+				for _, p := range c {
+					dc.LineTo(p.X, p.Y)
+				}
 			}
 		}
 

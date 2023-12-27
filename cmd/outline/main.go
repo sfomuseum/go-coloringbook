@@ -18,7 +18,9 @@ func main() {
 	var contour_iterations int
 	var contour_scale float64
 	var contour_format string
-
+	var contour_smoothing bool
+	var smoothing_iterations int
+	
 	var vtracer_precision int
 	var vtracer_speckle int
 
@@ -33,7 +35,9 @@ func main() {
 	fs.IntVar(&contour_iterations, "contour-iteration", 8, "The number of iterations to perform generating an image contour.")
 	fs.Float64Var(&contour_scale, "contour-scale", 1.0, "The scale factor of the final image contour.")
 	fs.StringVar(&contour_format, "contour-format", "png", "The format for the final image contour. Valid options are: png, svg.")
-
+	fs.BoolVar(&contour_smoothing, "contour-smoothing", false, "...")
+	fs.IntVar(&smoothing_iterations, "contour-smoothing-iterations", 6, "...")
+	
 	fs.IntVar(&vtracer_precision, "vtracer-precision", 6, "Number of significant bits (color precision) to use in an RGB channel.")
 	fs.IntVar(&vtracer_speckle, "vtracer-speckle", 8, "Discard patches smaller than X px in size")
 
@@ -51,6 +55,8 @@ func main() {
 		Iterations: contour_iterations,
 		Scale:      contour_scale,
 		Format:     contour_format,
+		Smoothing: contour_smoothing,
+		SmoothingIterations: smoothing_iterations,
 	}
 
 	trace_opts := &outline.TraceOptions{

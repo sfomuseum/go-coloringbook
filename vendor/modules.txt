@@ -1,3 +1,6 @@
+# github.com/aaronland/go-chaikin v1.0.0
+## explicit; go 1.18
+github.com/aaronland/go-chaikin
 # github.com/fogleman/colormap v0.0.0-20180829212827-f273ae61505a
 ## explicit
 github.com/fogleman/colormap
