@@ -22,10 +22,11 @@ const (
 )
 
 type ContourOptions struct {
-	Iterations int
-	Scale      float64
-	Format     string
-	Smoothing bool
+	Iterations          int
+	Scale               float64
+	Format              string
+	Smoothing           bool
+	SmoothingClose      bool
 	SmoothingIterations int
 }
 
@@ -125,24 +126,24 @@ func ContourImage(ctx context.Context, im image.Image, opts *ContourOptions) (im
 			dc.NewSubPath()
 
 			if opts.Smoothing {
-				
+
 				input := make([][2]float64, len(c))
-				
+
 				for i, p := range c {
-					input[i] = [2]float64{ p.X, p.Y }
+					input[i] = [2]float64{p.X, p.Y}
 				}
-				
+
 				iters := opts.SmoothingIterations
-				close := true
-				
+				close := opts.SmoothingClose
+
 				output := chaikin.Smooth(input, iters, close)
-				
+
 				for _, p := range output {
 					dc.LineTo(p[0], p[1])
 				}
-				
+
 			} else {
-				
+
 				for _, p := range c {
 					dc.LineTo(p.X, p.Y)
 				}
