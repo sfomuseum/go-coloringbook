@@ -36,11 +36,11 @@ func main() {
 	fs.IntVar(&contour_iterations, "contour-iteration", 8, "The number of iterations to perform generating an image contour.")
 	fs.Float64Var(&contour_scale, "contour-scale", 1.0, "The scale factor of the final image contour.")
 	fs.StringVar(&contour_format, "contour-format", "png", "The format for the final image contour. Valid options are: png, svg.")
-	fs.BoolVar(&contour_smoothing, "contour-smoothing", false, "...")
-	fs.IntVar(&smoothing_iterations, "contour-smoothing-iterations", 6, "...")
-	fs.BoolVar(&smoothing_close, "contour-smoothing-close", true, "...")
+	fs.BoolVar(&contour_smoothing, "contour-smoothing", true, "Enable line-smoothing of contours using Chaikin's algorithm.")
+	fs.IntVar(&smoothing_iterations, "contour-smoothing-iterations", 6, "The number of iterations to perform when doing line smoothing. Note: More than 6 iterations often results in blank images.")
+	fs.BoolVar(&smoothing_close, "contour-smoothing-close", true, "Automatically close paths when performing line smoothing.")
 
-	fs.IntVar(&vtracer_precision, "vtracer-precision", 6, "Number of significant bits (color precision) to use in an RGB channel.")
+	fs.IntVar(&vtracer_precision, "vtracer-precision", 4, "Number of significant bits (color precision) to use in an RGB channel.")
 	fs.IntVar(&vtracer_speckle, "vtracer-speckle", 8, "Discard patches smaller than X px in size")
 
 	fs.BoolVar(&use_batik, "use-batik", true, "Use the Java Batik SVG raterizer.")

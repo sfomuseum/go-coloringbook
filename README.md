@@ -20,6 +20,12 @@ $> ./bin/outline -h
     	The number of iterations to perform generating an image contour. (default 8)
   -contour-scale float
     	The scale factor of the final image contour. (default 1)
+  -contour-smoothing
+    	Enable line-smoothing of contours using Chaikin's algorithm. (default true)
+  -contour-smoothing-close
+    	Automatically close paths when performing line smoothing. (default true)
+  -contour-smoothing-iterations int
+    	The number of iterations to perform when doing line smoothing. Note: More than 6 iterations often results in blank images. (default 4)
   -infile string
     	The path to the image you want to generate an outline for.
   -outfile string
@@ -53,3 +59,4 @@ And produce this file:
 * https://www.visioncortex.org/vtracer/
 * https://xmlgraphics.apache.org/batik/
 * https://github.com/fogleman/contourmap
+* https://github.com/aaronland/go-chaikin
